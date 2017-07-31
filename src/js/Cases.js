@@ -2,210 +2,115 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 class Cases extends Component {
-    constructor(){
-        super();
-        this.state={
-            lis:[],
-            upes:0
-        }
+	constructor(){
+       super();
+       this.state={
+            prize:[]  ,
+            id:null   
+       };
     };
-    componentDidMount () {
-    	{/* 案例列表一*/}
-	        $.ajax({
-				type:"get",
-				url:"http://localhost:8100/cebest/alcases1",
-				async:true,
-				contentType:false,
-				processData:false,
-				success:function(e){	
-					this.setState({
-						lis:e
-					})
-					console.log(this.state.lis)
-				
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});
-			
-			
-			
-			
-			
-			
-		{/* 上传*/}	
-		$('#addsbtn1').click(function(){
-		if($("#text1").val()!=""&&this.refs.fils1.files[0]!=undefined){
-		$.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/accases1",
-				data:{"text":$("#text1").val()},
-				success:function(e){				
-				alert(e)
+	componentDidMount(){
+        $.ajax({
+            type:"post",
+            url:"http://localhost:8100/tianfang/prize",
+            async:"true",
+            success:function(pp){
+     console.log(pp)
+                this.setState({
+                    prize:pp
+                })
+            }.bind(this),
+            error:function(){
+                alert('失败了');
+            }
+        });
+    }
+    fn=function(event){
+    	var aa=event.target.parentElement.firstElementChild.innerHTML
+    	this.setState({
+    		id:aa
+    	})
+		$('.alert').css({
+		'display':"block"
+		})
+		$('.wrap').css({
+			'display':"none"
+		})
+    }.bind(this);
+    fns=function(event){
+		var aa=event.target
+			var  id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
-				type:"get",
-				url:"http://localhost:8100/cebest/alcases1",
-				success:function(e){	
-					this.setState({
-						lis:e
-					})
-			console.log(this.state.lis)
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});	
-				
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});		
-			    	}else{
-			    		alert("请输入完整")
-			    	}
-		}.bind(this))
-		
-		
-  };
-  
-    setFiles=function(element){
-    	console.log(element)
-    	var files=[]
-    	files=element.files[0] 
-		  var fd=new FormData();  //表单处理数据的方法
-				fd.append('uploadedFile',files)
-				//用append方法以键值对的方式保存
-		        console.log(fd)
-	        $.ajax({
 				type:"post",
-				url:"http://localhost:8100/cebest/incases1",
-				async:true,
-				data:fd,
-				contentType:false,
-				processData:false,
-				success:function(e){	
-					alert("哈哈")	
-      		},
-      		error:function(){
-      			console.log("666")
-      		}
-			});
-		  }
-    
-        fn=function(event){
-        	var aa=event.target
-				var  cid=aa.parentElement.firstElementChild.innerHTML
-				{/* 删除*/}
-				$.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/dlcases1",
-				data:{"cid":cid},
+				url:"http://localhost:8100/tianfang/dlcases1",
+				data:{"id":id},
 				success:function(e){				
-					alert(e)
-					for(var i in this.state.lis){
-						if(this.state.lis[i].cid==cid){
-							var aa=this.state.lis.splice(i,1)
+				for(var i in this.state.prize){
+						if(this.state.prize[i].id==id){
+							var aa=this.state.prize.splice(i,1)
 							this.setState({
-								lis:this.state.lis
+								prize:this.state.prize
 							})
 						}
 					}
+				console.log(this.state.prize)
       		}.bind(this),
       		error:function(){
-      			alert("666")
+      			alert("失败了")
       		}
 			});
     }.bind(this);
-    revisefn=function(event){
-    	$(".black1").css("display","block")
-    	var aa=event.target
-		var  cid=aa.parentElement.firstElementChild.innerHTML
-		this.setState({
-			upes:cid
+    ok=function(){
+    	$('.alert').css({
+    		'display':'none'
+    	})
+    	$('.wrap').css({
+			'display':"block"
 		})
-    }.bind(this)
-    confirmfn=function(){
-    	$(".black1").css("display","none")
-	    $.ajax({
-				type:"get",
-				url:"http://localhost:8100/cebest/alcases1",
-				async:true,
-				contentType:false,
-				processData:false,
-				success:function(e){	
-					this.setState({
-						lis:e
-					})
-					console.log(this.state.lis)
-				
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});	
-    }.bind(this)
-    upfn1=function(event){
-    		$.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/upcases1",
-				data:{"cid":this.state.upes},
-				success:function(e){				
-				alert(e)
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});		
-    }.bind(this)
-    upfn2=function(event){
-    		$.ajax({
-				type:"post",
-				url:"http://localhost:8100/cebest/upscases1",
-				data:{"cid":this.state.upes,"con":$("#houp").val()},
-				success:function(e){				
-				alert(e)
-      		}.bind(this),
-      		error:function(){
-      			console.log("666")
-      		}
-			});		
+    	 $.ajax({
+            type:"post",
+            url:"http://localhost:8100/tianfang/upprize",
+            async:"true",
+            data:{'id':this.state.id,"title":$("#atext").val()},
+            success:function(pp){
+            	console.log(pp)
+                alert(pp)
+            }.bind(this),
+            error:function(){
+                alert('失败了');
+            }
+        });
     }.bind(this)
     render() {
         return (
-            <div className="my-cases">
-            <p className="titles">案例列表一</p>
-        <p>
-        选择要添加的图片   <input type="file" ref="fils1" onChange={this.setFiles.bind(null,this.refs.fils1)}  multiple="multiple"/>
-        con内容 : <input type="text" id="text1"/>
-        <button id="addsbtn1">上传啦</button>
-        </p>
-		<div className="photo">
-			<ul className="list" id="list1">
-				<li><span>id</span>  <span>img</span> <span>con</span></li>
-				{this.state.lis.map(function(v,i){
-					return <li key={i+1}>
-					<span>{v.cid}</span> 
-					<span><img src={v.src} /></span>    
-					<span>{v.con}</span> 
-					<button className="setbtns1" onClick={this.revisefn}>修改</button>  
-					<button className="clearbtns clearbtns1" onClick={this.fn.bind(null)}>删除</button>
-				</li>
-				}.bind(this))}
-			</ul>
-		</div>
-		<div className="black black1">
-		<div className="cases1-box" id="fixeds">
-		<p className="fixed-title">案例一修改</p>
-		 <p>选择要修改的图片</p> 
-		<p><input type="file" ref="fixedimg"  onChange={this.setFiles.bind(null,this.refs.fixedimg)}    multiple="multiple"/><button id="addsbtn1" onClick={this.upfn1}>上传啦</button></p>
-        <p>con内容 : <input type="text" id="houp"/><button id="addsbtn1" onClick={this.upfn2}>上传啦</button></p>
-        <p><button id="confirm" onClick={this.confirmfn}>确定</button></p>
-		</div>
-		</div>
-            </div>
+        	<div classname="box">
+        		
+        		<div className="box_bottom">
+        			<ul>
+						<li className="uid">id</li>
+        				<li className="title">title</li>
+        				<li className="img">img</li>
+        			{this.state.prize.map(function(pp,i){
+        				return(<div key={i} className="wrap">
+        						<div className="uids">{pp.id}</div>
+        						<div className="word">{pp.prize_word}</div>
+        						<button className="mov" onClick={this.fns} id="mov">删除</button>
+        						<button className="rev" onClick={this.fn} id="rev">修改</button>
+        						<div className="pic"><img src={pp.prize_img}/></div>
+        						
+        					</div>)
+        				
+        			 }.bind(this))}
+        			<div className="alert">
+        				<input type="file" multiple="multiple" className="flie_img"/>
+        				<div className="tit">title:<input type="text" id="atext"/></div>
+        				<button className="ok" onClick={this.ok} id="ok">确定</button>
+        			</div>
+        			</ul>
+        			
+        		</div>
+        	</div>    
         )
-    };
+    }
 }
 export default Cases;

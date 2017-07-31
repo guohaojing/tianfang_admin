@@ -21,12 +21,12 @@ class App extends Component {
     $("#cases").click(function(){
     	$(".admin").children().hide()
     	$(".cases").show()
-    	$(".bread li:nth-child(2)").text("案例一")
+    	$(".bread li:nth-child(2)").text("ADVANTAGE优势")
   })
         $("#cases2").click(function(){
     	$(".admin").children().hide()
     	$(".cases2").show()
-    	$(".bread li:nth-child(2)").text("案例二")
+    	$(".bread li:nth-child(2)").text("NEWS资讯")
   })
 	    }
   render() {
@@ -50,8 +50,8 @@ class App extends Component {
     <li><a><span className="icon-caret-right"></span>内容管理</a></li>
     <li><a><span className="icon-caret-right"></span>添加内容</a></li>
     <li><a><span className="icon-caret-right"></span>分类管理</a></li> 
-    <li id="cases"><a><span className="icon-caret-right"></span>案例一</a></li>   
-    <li id="cases2"><a><span className="icon-caret-right"></span>案例二</a></li>   
+    <li id="cases"><a><span className="icon-caret-right"></span>NEWS资讯</a></li>   
+    <li id="cases2"><a><span className="icon-caret-right"></span>ADVANTAGE优势</a></li>   
   </ul>  
 </div>
 <ul className="bread">
@@ -61,7 +61,7 @@ class App extends Component {
 <div className="admin">
 <div className="cases"><Cases></Cases></div>
 <div className="cases2"><Cases2></Cases2></div>
-<p>啊实打实的</p>
+<p>后台管理系统</p>
 </div>
       </div>
     );
