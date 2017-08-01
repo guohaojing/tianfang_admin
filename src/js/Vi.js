@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import './../css/news.css';
-class Cases extends Component {
+
+class Vi extends Component {
 	constructor(){
        super();
        this.state={
-            prize:[]  ,
+            pic_list:[]  ,
             id:null   
        };
     };
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/prize",
+            url:"http://localhost:8100/tianfang/pic_list",
             async:"true",
             success:function(pp){
      console.log(pp)
                 this.setState({
-                    prize:pp
+                    pic_list:pp
                 })
             }.bind(this),
             error:function(){
@@ -45,15 +45,15 @@ class Cases extends Component {
 				url:"http://localhost:8100/tianfang/dlcases1",
 				data:{"id":id},
 				success:function(e){				
-				for(var i in this.state.prize){
-						if(this.state.prize[i].id==id){
-							var aa=this.state.prize.splice(i,1)
+				for(var i in this.state.pic_list){
+						if(this.state.pic_list[i].id==id){
+							var aa=this.state.pic_list.splice(i,1)
 							this.setState({
-								prize:this.state.prize
+								pic_list:this.state.pic_list
 							})
 						}
 					}
-				console.log(this.state.prize)
+				console.log(this.state.pic_list)
       		}.bind(this),
       		error:function(){
       			alert("失败了")
@@ -71,7 +71,7 @@ class Cases extends Component {
             type:"post",
             url:"http://localhost:8100/tianfang/upprize",
             async:"true",
-            data:{'id':this.state.id,"title":$("#ptext").val()},
+            data:{'id':this.state.id,"title":$("#ftext").val()},
             success:function(pp){
             	console.log(pp)
                 alert(pp)
@@ -81,38 +81,6 @@ class Cases extends Component {
             }
         });
     }.bind(this)
-     add=function(event){
-        var aa=event.target.parentElement.firstElementChild.innerHTML
-        this.setState({
-            id:aa
-        })
-        $('.add_box').css({
-            'display':"block"
-        })
-        $('.box_bottom').css({
-            'display':"none"
-        })
-        
-    }.bind(this)
-     yes=function(){
-        $('.add_box').css({
-            'display':'none'
-        })
-        $('.box_bottom').css({
-            'display':"block"
-        })
-        $.ajax({
-                type:"post",
-                url:"http://localhost:8100/tianfang/accases2",
-                data:{"text":$("#th").val()},
-                success:function(e){                
-                alert(e)
-            }.bind(this),
-            error:function(){
-                console.log("失败了")
-            }
-            });     
-        }.bind(this)
     setFiles = function(element) {
         console.log(element)
         var files = []
@@ -123,7 +91,7 @@ class Cases extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/incases8",
+            url: "http://localhost:8100/tianfang/incases4",
             async: true,
             data: fd,
             contentType: false,
@@ -131,7 +99,7 @@ class Cases extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/alcases8",
+                    url: "http://localhost:8100/tianfang/alcases4",
                     data: {
                         "id": this.state.id 
                     },
@@ -149,41 +117,72 @@ class Cases extends Component {
         });
 
     }.bind(this)
+    add=function(event){
+    	var aa=event.target.parentElement.firstElementChild.innerHTML
+    	this.setState({
+    		id:aa
+    	})
+    	$('.add_box').css({
+    		'display':"block"
+    	})
+    	$('.box_bottom').css({
+    		'display':"none"
+    	})
+    	
+    }.bind(this)
+    yes=function(){
+    	$('.add_box').css({
+    		'display':'none'
+    	})
+    	$('.box_bottom').css({
+			'display':"block"
+		})
+		$.ajax({
+				type:"post",
+				url:"http://localhost:8100/tianfang/accases1",
+				data:{"text":$("#aa").val()},
+				success:function(e){				
+				alert(e)
+      		}.bind(this),
+      		error:function(){
+      			console.log("失败了")
+      		}
+			});		
+		}.bind(this)
     render() {
         return (
         	<div classname="box">
-        		
+        		<div className="add" onClick={this.add}>+</div>	
         		<div className="box_bottom">
-                <div className="add" onClick={this.add}>+</div> 
         			<ul>
 						<li className="uid">id</li>
         				<li className="title">title</li>
         				<li className="imgs">img</li>
-        			{this.state.prize.map(function(pp,i){
+        			{this.state.pic_list.map(function(pp,i){
         				return(<div key={i} className="wrap">
         						<div className="uids">{pp.id}</div>
-        						<div className="word">{pp.prize_word}</div>
+        						<div className="word">{pp.after}</div>
         						<button className="mov" onClick={this.fns} id="mov">删除</button>
         						<button className="rev" onClick={this.fn} id="rev">修改</button>
-        						<div className="pics"><img src={pp.prize_img}/></div>
+        						<div className="pics"><img src={pp.pics}/></div>
         						
         					</div>)
         				
         			 }.bind(this))}
         			<div className="alert">
         				<p><input type="file" ref="fixedimg3"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
-        				<div className="tit">title:<input type="text" id="ptext"/></div>
+        				<div className="tit">title:<input type="text" id="ftext"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>
         			</div>
-        			</ul>	
+        			</ul>
         		</div>
-                <div className="add_box">
-                    <p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple" id="btn"/></p>
-                    <div className="tit">title:<input type="text" id="th"/></div>
-                    <button className="ok" onClick={this.yes} id="ok">确定</button>
-                </div>
+        		<div className="add_box">
+        			<p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple" id="btn"/></p>
+        			<div className="tit">title:<input type="text" id="aa"/></div>
+        			<button className="ok" onClick={this.yes} id="ok">确定</button>
+        		</div>
         	</div>    
         )
     }
 }
-export default Cases;
+export default Vi;

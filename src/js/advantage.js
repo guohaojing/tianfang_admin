@@ -80,7 +80,42 @@ class Cases2 extends Component {
             }
         });
     }.bind(this);
+    setFiles = function(element) {
+            console.log(element)
+            var files = []
+            files = element.files[0]
+            var fd = new FormData(); //表单处理数据的方法
+            fd.append('uploadedFile', files)
+            //用append方法以键值对的方式保存
+            console.log(fd)
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8100/tianfang/incases2",
+                async: true,
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function(e) {
+                    $.ajax({
+                        type: "post",
+                        url: "http://localhost:8100/tianfang/alcases2",
+                        data: {
+                            "id": this.state.id 
+                        },
+                        success: function(e) {
+                            console.log(e)
+                        }.bind(this),
+                        error: function() {
+                            console.log("失败了")
+                        }
+                    });
+                }.bind(this),
+                error: function() {
+                    console.log("失败了")
+                }
+            });
 
+        }.bind(this)
     render() {
         return (
         	<div classname="box">
@@ -103,7 +138,7 @@ class Cases2 extends Component {
         				
         			 }.bind(this))}
         			<div className="alert">
-        				<input type="file" multiple="multiple" className="flie_img"/>
+        				    <p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple"/></p>
         				<div className="tit">title:<input type="text" id="ytext"/></div>
         				<div className="engo">eng:<input type="text" id="xtext"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>
