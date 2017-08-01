@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-
+import './../css/news.css';
 class Cases2 extends Component {
 	constructor(){
        super();
@@ -31,7 +31,7 @@ class Cases2 extends Component {
     		id:aa
     	})
 		$('.alert').css({
-		'display':"block"
+		  'display':"block"
 		})
 		$('.wrap').css({
 			'display':"none"

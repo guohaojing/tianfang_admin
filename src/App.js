@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import logo from './logo.svg';
-import Cases from './js/news';
-import Cases2 from './js/advantage';
+import Cases from './js/News';
+import Cases2 from './js/Advantage';
+import System from './js/System';
+import Supers from './js/Supers';
+import Gold from './js/Gold';
+import Design from './js/Design';
 import './css/admin.css';
 import './css/pintuer.css';
 import './css/css.css';
 import './css/news.css';
+import './css/system.css';
+import './css/supers.css';
+
 class App extends Component {
 	    componentDidMount=function () {
 	  $(".leftnav h2").click(function(){
@@ -27,6 +34,26 @@ class App extends Component {
     	$(".admin").children().hide()
     	$(".cases2").show()
     	$(".bread li:nth-child(2)").text("NEWS资讯")
+  })
+        $("#system").click(function(){
+      $(".admin").children().hide()
+      $(".system").show()
+      $(".bread li:nth-child(2)").text("网络+互动")
+  })
+        $("#supers").click(function(){
+      $(".admin").children().hide()
+      $(".supers").show()
+      $(".bread li:nth-child(2)").text("空间+导视")
+  })
+         $("#gold").click(function(){
+      $(".admin").children().hide()
+      $(".gold").show()
+      $(".bread li:nth-child(2)").text("GOLD")
+  })
+         $("#design").click(function(){
+      $(".admin").children().hide()
+      $(".design").show()
+      $(".bread li:nth-child(2)").text("DESIGN")
   })
 	    }
   render() {
@@ -51,7 +78,11 @@ class App extends Component {
     <li><a><span className="icon-caret-right"></span>添加内容</a></li>
     <li><a><span className="icon-caret-right"></span>分类管理</a></li> 
     <li id="cases"><a><span className="icon-caret-right"></span>NEWS资讯</a></li>   
-    <li id="cases2"><a><span className="icon-caret-right"></span>ADVANTAGE优势</a></li>   
+    <li id="cases2"><a><span className="icon-caret-right"></span>ADVANTAGE优势</a></li> 
+    <li id="system"><a><span className="icon-caret-right"></span>网络+互动</a></li> 
+    <li id="supers"><a><span className="icon-caret-right"></span>空间+导视</a></li>
+    <li id="gold"><a><span className="icon-caret-right"></span>GOLD</a></li>
+    <li id="design"><a><span className="icon-caret-right"></span>DESIGN</a></li>  
   </ul>  
 </div>
 <ul className="bread">
@@ -61,6 +92,10 @@ class App extends Component {
 <div className="admin">
 <div className="cases"><Cases></Cases></div>
 <div className="cases2"><Cases2></Cases2></div>
+<div className="system"><System></System></div>
+<div className="supers"><Supers></Supers></div>
+<div className="gold"><Gold></Gold></div>
+<div className="design"><Design></Design></div>
 <p>后台管理系统</p>
 </div>
       </div>
