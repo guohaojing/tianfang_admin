@@ -31,12 +31,12 @@ class App extends Component {
     $("#cases").click(function(){
     	$(".admin").children().hide()
     	$(".cases").show()
-    	$(".bread li:nth-child(2)").text("ADVANTAGE优势")
+    	$(".bread li:nth-child(2)").text("NEWS资讯")
   })
         $("#cases2").click(function(){
     	$(".admin").children().hide()
     	$(".cases2").show()
-    	$(".bread li:nth-child(2)").text("NEWS资讯")
+    	$(".bread li:nth-child(2)").text("ADVANTAGE优势")
   })
         $("#system").click(function(){
       $(".admin").children().hide()
@@ -58,11 +58,6 @@ class App extends Component {
       $(".design").show()
       $(".bread li:nth-child(2)").text("DESIGN")
   })
-      $("#cases2").click(function(){
-        	$(".admin").children().hide()
-        	$(".cases2").show()
-        	$(".bread li:nth-child(2)").text("NEWS资讯")
-      })
       $("#vi").click(function(){
           $(".admin").children().hide()
           $(".vi").show()
@@ -95,7 +90,8 @@ class App extends Component {
     <li id="system"><a><span className="icon-caret-right"></span>网络+互动</a></li> 
     <li id="supers"><a><span className="icon-caret-right"></span>空间+导视</a></li>
     <li id="gold"><a><span className="icon-caret-right"></span>GOLD</a></li>
-    <li id="design"><a><span className="icon-caret-right"></span>DESIGN</a></li>  
+    <li id="design"><a><span className="icon-caret-right"></span>DESIGN</a></li>
+    <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li>   
   </ul>  
 </div>
 <ul className="bread">
@@ -109,41 +105,9 @@ class App extends Component {
 <div className="supers"><Supers></Supers></div>
 <div className="gold"><Gold></Gold></div>
 <div className="design"><Design></Design></div>
+<div className="vi"><Vi></Vi></div>
 <p>后台管理系统</p>
-</div>
-          <div className="header bg-main">
-            <div className="logo margin-big-left fadein-top">
-              <h1>后台管理中心</h1>
-            </div>
-          </div>
-          <div className="leftnav">
-            <div className="leftnav-title"><strong><span className="icon-list"></span>菜单列表</strong></div>
-            <h2><span className="icon-user"></span>基本设置</h2>
-            <ul>
-              <li><a><span className="icon-caret-right"></span>网站设置</a></li>
-              <li><a><span className="icon-caret-right"></span>单页管理</a></li>
-              <li><a><span className="icon-caret-right"></span>栏目管理</a></li>
-            </ul>   
-            <h2><a><span className="icon-pencil-square-o"></span>栏目管理</a></h2>
-            <ul>
-              <li><a><span className="icon-caret-right"></span>内容管理</a></li>
-              <li><a><span className="icon-caret-right"></span>添加内容</a></li>
-              <li><a><span className="icon-caret-right"></span>分类管理</a></li> 
-              <li id="cases"><a><span className="icon-caret-right"></span>NEWS资讯</a></li>   
-              <li id="cases2"><a><span className="icon-caret-right"></span>ADVANTAGE优势</a></li>
-              <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li> 
-            </ul>  
-          </div>
-          <ul className="bread">
-            <li> 首页</li>
-            <li>网站信息</li>
-          </ul>
-          <div className="admin">
-            <div className="cases"><Cases></Cases></div>
-            <div className="cases2"><Cases2></Cases2></div>
-            <div className="vi"><Vi></Vi></div>
-            <p>后台管理系统</p>
-          </div>
+      </div>
       </div>
     );
   }
