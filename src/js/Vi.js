@@ -97,7 +97,9 @@ class Vi extends Component {
             contentType: false,
             processData: false,
             success: function(e) {
-                $.ajax({
+                if(element.id=="ppo"){
+                    alert("66")
+                    $.ajax({
                     type: "post",
                     url: "http://localhost:8100/tianfang/alcases4",
                     data: {
@@ -109,7 +111,11 @@ class Vi extends Component {
                     error: function() {
                         console.log("失败了")
                     }
-                });
+                });  
+                }
+                
+                
+                
             }.bind(this),
             error: function() {
                 console.log("失败了")
@@ -140,7 +146,7 @@ class Vi extends Component {
 		$.ajax({
 				type:"post",
 				url:"http://localhost:8100/tianfang/accases1",
-				data:{"text":$("#aa").val()},
+				data:{"text":$("#bb").val()},
 				success:function(e){				
 				alert(e)
       		}.bind(this),
@@ -170,7 +176,7 @@ class Vi extends Component {
         				
         			 }.bind(this))}
         			<div className="alert">
-        				<p><input type="file" ref="fixedimg3"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
+        				<p><input type="file" ref="fixedimg3" id="ppo"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
         				<div className="tit">title:<input type="text" id="ftext"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>
         			</div>
@@ -178,7 +184,7 @@ class Vi extends Component {
         		</div>
         		<div className="add_box">
         			<p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple" id="btn"/></p>
-        			<div className="tit">title:<input type="text" id="aa"/></div>
+        			<div className="tit">title:<input type="text" id="bb"/></div>
         			<button className="ok" onClick={this.yes} id="ok">确定</button>
         		</div>
         	</div>    

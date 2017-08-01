@@ -69,7 +69,7 @@ class Cases extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upprize",
+            url:"http://localhost:8100/tianfang/upprizes",
             async:"true",
             data:{'id':this.state.id,"title":$("#ptext").val()},
             success:function(pp){
@@ -129,6 +129,7 @@ class Cases extends Component {
             contentType: false,
             processData: false,
             success: function(e) {
+                if(element.id=="ppo"){
                 $.ajax({
                     type: "post",
                     url: "http://localhost:8100/tianfang/alcases8",
@@ -142,6 +143,7 @@ class Cases extends Component {
                         console.log("失败了")
                     }
                 });
+            }
             }.bind(this),
             error: function() {
                 console.log("失败了")
@@ -171,7 +173,7 @@ class Cases extends Component {
         				
         			 }.bind(this))}
         			<div className="alert">
-        				<p><input type="file" ref="fixedimg3"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
+        				<p><input type="file" ref="fixedimg3" id="ppo"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
         				<div className="tit">title:<input type="text" id="ptext"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>
         			</div>
