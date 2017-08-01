@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import logo from './logo.svg';
-import Cases from './js/Cases';
-import Cases2 from './js/Cases2';
+import Cases from './js/news';
+import Cases2 from './js/advantage';
 import './css/admin.css';
 import './css/pintuer.css';
 import './css/css.css';
-import './css/cases.css';
+import './css/news.css';
 class App extends Component {
 	    componentDidMount=function () {
 	  $(".leftnav h2").click(function(){
