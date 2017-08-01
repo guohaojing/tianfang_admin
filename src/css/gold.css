@@ -27,6 +27,8 @@
 }
 .uidss{
 	float:left;
+	margin-top:20px;
+
 }
 
 .words{
@@ -34,12 +36,15 @@
 	min-height:100px;
 	margin-left:13%;
 	float:left;
+	margin-top:20px;
+
 }
 .picss{
 	width:500px;
 	height:100px;
 	float:left;
 	margin-left:100px;
+	margin-top:20px;
 }
 .picss img{
 	width:50px;
