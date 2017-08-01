@@ -13,6 +13,9 @@
 	margin-left:25%;
 	float:left;
 }
+.imgs{
+	margin-left:35%;
+}
 .img{
 	margin-left:25%;
 }
@@ -46,11 +49,18 @@
 	text-align:center;
 	float:right;
 }
-
+.pics{
+	margin-right:30%;
+	float:right;
+}
 .pic{
 	margin-right:13%;
 	float:right;
 	
+}
+.pics img{
+	width:50px;
+	height:50px;
 }
 .pic img{
 	width:50px;

@@ -89,14 +89,14 @@ class Cases extends Component {
         			<ul>
 						<li className="uid">id</li>
         				<li className="title">title</li>
-        				<li className="img">img</li>
+        				<li className="imgs">img</li>
         			{this.state.prize.map(function(pp,i){
         				return(<div key={i} className="wrap">
         						<div className="uids">{pp.id}</div>
         						<div className="word">{pp.prize_word}</div>
         						<button className="mov" onClick={this.fns} id="mov">删除</button>
         						<button className="rev" onClick={this.fn} id="rev">修改</button>
-        						<div className="pic"><img src={pp.prize_img}/></div>
+        						<div className="pics"><img src={pp.prize_img}/></div>
         						
         					</div>)
         				
