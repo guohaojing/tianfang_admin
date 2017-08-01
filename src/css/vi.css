@@ -1,0 +1,27 @@
+*{
+	margin:0; padding:0;
+}
+.add{
+	float:right;
+	margin-right:120px;
+	font-size:36px;
+	cursor:pointer;
+	user-select:none;
+}
+.add_box{
+	display:none;
+}
+.add_box{
+	width:600px;
+	height:200px;
+	background:#eee;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-50px;
+	margin-left:-300px;
+}
+#btn{
+	margin-left:200px;
+	margin-top:50px;
+}
