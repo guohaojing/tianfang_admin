@@ -3,7 +3,7 @@ import $ from 'jquery';
 import logo from './logo.svg';
 import Cases from './js/News';
 import Cases2 from './js/Advantage';
-
+import Products from './js/Products';
 import System from './js/System';
 import Supers from './js/Supers';
 import Gold from './js/Gold';
@@ -63,15 +63,20 @@ class App extends Component {
           $(".vi").show()
           $(".bread li:nth-child(2)").text("标志+VI")
       })
+       $("#products").click(function(){
+          $(".admin").children().hide()
+          $(".products").show()
+          $(".bread li:nth-child(2)").text("PRODUCTS")
+      })
 	  }
   render() {
     return (
-      <div className="App">
-    	<div className="header bg-main">
-  <div className="logo margin-big-left fadein-top">
-    <h1>后台管理中心</h1>
+<div className="App">
+  <div className="header bg-main">
+    <div className="logo margin-big-left fadein-top">
+      <h1>后台管理中心</h1>
+    </div>
   </div>
-</div>
 <div className="leftnav">
   <div className="leftnav-title"><strong><span className="icon-list"></span>菜单列表</strong></div>
   <h2><span className="icon-user"></span>基本设置</h2>
@@ -91,24 +96,26 @@ class App extends Component {
     <li id="supers"><a><span className="icon-caret-right"></span>空间+导视</a></li>
     <li id="gold"><a><span className="icon-caret-right"></span>GOLD</a></li>
     <li id="design"><a><span className="icon-caret-right"></span>DESIGN</a></li>
-    <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li>   
+    <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li> 
+    <li id="products"><a><span className="icon-caret-right"></span>PRODUCTS</a></li>   
   </ul>  
 </div>
 <ul className="bread">
   <li> 首页</li>
   <li>网站信息</li>
 </ul>
-<div className="admin">
-<div className="cases"><Cases></Cases></div>
-<div className="cases2"><Cases2></Cases2></div>
-<div className="system"><System></System></div>
-<div className="supers"><Supers></Supers></div>
-<div className="gold"><Gold></Gold></div>
-<div className="design"><Design></Design></div>
-<div className="vi"><Vi></Vi></div>
-<p>后台管理系统</p>
-      </div>
-      </div>
+  <div className="admin">
+    <div className="cases"><Cases></Cases></div>
+    <div className="cases2"><Cases2></Cases2></div>
+    <div className="system"><System></System></div>
+    <div className="supers"><Supers></Supers></div>
+    <div className="gold"><Gold></Gold></div>
+    <div className="design"><Design></Design></div>
+    <div className="vi"><Vi></Vi></div>
+    <div className="products"><Products></Products></div>
+    <p>后台管理系统</p>
+  </div>
+</div>
     );
   }
 }

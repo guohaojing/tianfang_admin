@@ -98,7 +98,6 @@ class Vi extends Component {
             processData: false,
             success: function(e) {
                 if(element.id=="ppo"){
-                    alert("66")
                     $.ajax({
                     type: "post",
                     url: "http://localhost:8100/tianfang/alcases4",

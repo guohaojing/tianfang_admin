@@ -42,7 +42,7 @@ class Cases extends Component {
 			var  id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases1",
+				url:"http://localhost:8100/tianfang/dlcases8",
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.prize){
