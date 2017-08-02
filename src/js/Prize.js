@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import './../css/news.css';
-class Cases extends Component {
+import './../css/gold.css';
+class Prize extends Component {
 	constructor(){
        super();
        this.state={
@@ -15,7 +15,7 @@ class Cases extends Component {
             url:"http://localhost:8100/tianfang/prize",
             async:"true",
             success:function(pp){
-     console.log(pp)
+     			console.log(pp)
                 this.setState({
                     prize:pp
                 })
@@ -33,7 +33,7 @@ class Cases extends Component {
 		$('.alert').css({
 		'display':"block"
 		})
-		$('.wrap').css({
+		$('.wraps').css({
 			'display':"none"
 		})
     }.bind(this);
@@ -69,9 +69,9 @@ class Cases extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upprizes",
+            url:"http://localhost:8100/tianfang/upprizes_prize",
             async:"true",
-            data:{'id':this.state.id,"title":$("#ptext").val()},
+            data:{'id':this.state.id,"title":$("#ptext_prize").val()},
             success:function(pp){
             	console.log(pp)
                 alert(pp)
@@ -104,7 +104,7 @@ class Cases extends Component {
         $.ajax({
                 type:"post",
                 url:"http://localhost:8100/tianfang/accases2",
-                data:{"text":$("#th").val()},
+                data:{"text":$("#th_prize").val()},
                 success:function(e){                
                 alert(e)
             }.bind(this),
@@ -150,7 +150,46 @@ class Cases extends Component {
             }
         });
 
-    }.bind(this)
+    }.bind(this);
+
+    setFiles = function(element) {
+        console.log(element)
+        var files = []
+        files = element.files[0]
+        var fd = new FormData(); //表单处理数据的方法
+        fd.append('uploadedFile', files)
+        //用append方法以键值对的方式保存
+        console.log(fd)
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8100/tianfang/incases11",
+            async: true,
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(e) {
+                if(element.id=="ppo"){
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:8100/tianfang/alcases12",
+                    data: {
+                        "id": this.state.id 
+                    },
+                    success: function(e) {
+                        console.log(e)
+                    }.bind(this),
+                    error: function() {
+                        console.log("失败了")
+                    }
+                });
+            }
+            }.bind(this),
+            error: function() {
+                console.log("失败了")
+            }
+        });
+
+    }.bind(this);
     render() {
         return (
         	<div classname="box">
@@ -162,30 +201,35 @@ class Cases extends Component {
         				<li className="title">title</li>
         				<li className="imgs">img</li>
         			{this.state.prize.map(function(pp,i){
-        				return(<div key={i} className="wrap">
-        						<div className="uids">{pp.id}</div>
-        						<div className="word">{pp.prize_word}</div>
+        				return(<div key={i} className="wraps">
+        						<div className="uidss">{pp.id}</div>
+        						<div className="words">{pp.con}</div>
         						<button className="mov" onClick={this.fns} id="mov">删除</button>
         						<button className="rev" onClick={this.fn} id="rev">修改</button>
-        						<div className="pics"><img src={pp.prize_img}/></div>
+        						<div className="picss">
+        							{pp.more.split('?').map(function(oo,i){
+                                        return <img src={'http://localhost:8100/images/'+oo} alt="" />
+                                    })}
+
+        						</div>
         						
         					</div>)
         				
         			 }.bind(this))}
         			<div className="alert">
         				<p><input type="file" ref="fixedimg3" id="ppo"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
-        				<div className="tit">title:<input type="text" id="ptext"/></div>
+        				<div className="tit">title:<input type="text" id="ptext_prize"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>
         			</div>
         			</ul>	
         		</div>
                 <div className="add_box">
                     <p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple" id="btn"/></p>
-                    <div className="tit">title:<input type="text" id="th"/></div>
+                    <div className="tit">title:<input type="text" id="th_prize"/></div>
                     <button className="ok" onClick={this.yes} id="ok">确定</button>
                 </div>
         	</div>    
         )
     }
 }
-export default Cases;
+export default Prize;
