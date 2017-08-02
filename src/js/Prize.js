@@ -207,10 +207,11 @@ class Prize extends Component {
         						<button className="mov" onClick={this.fns} id="mov">删除</button>
         						<button className="rev" onClick={this.fn} id="rev">修改</button>
         						<div className="picss">
+                                
+
         							{pp.more.split('?').map(function(oo,i){
                                         return <img src={'http://localhost:8100/images/'+oo} alt="" />
-                                    })}
-
+                                     })}
         						</div>
         						
         					</div>)

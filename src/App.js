@@ -98,7 +98,6 @@ class App extends Component {
       <li id="gold"><a><span className="icon-caret-right"></span>GOLD</a></li>
       <li id="design"><a><span className="icon-caret-right"></span>DESIGN</a></li>
       <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li>    
-      <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li>
       <li id="prize"><a><span className="icon-caret-right"></span>PRIZE</a></li>    
     </ul>  
   </div>
