@@ -169,7 +169,7 @@ class Cases extends Component {
             contentType: false,
             processData: false,
             success: function(e) {
-if(element.id=="opp"){
+            if(element.id=="opp"){
                 $.ajax({
                     type: "post",
                     url: "http://localhost:8100/tianfang/alcases12",
