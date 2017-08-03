@@ -8,5 +8,12 @@
 .about{display:none;}
 .prize{display:none;}
 .img{display:none;}
+.manage{width:400px; height:20px;
+	position:absolute; 
+	top:50%;
+	left:50%;
+	margin:-10px 0 0 -200px;
+	font-size:40px;
+}
 
 
