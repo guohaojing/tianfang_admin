@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './../css/gold.css';
+import conf from './../config';
 class Design extends Component {
 	constructor(){
        super();
@@ -12,7 +13,7 @@ class Design extends Component {
     componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/supers",
+            url:`${conf.url}/tianfang/supers`,
             async:"true",
             success:function(pp){
             console.log(pp)
@@ -35,7 +36,7 @@ class Design extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/super_file",
+            url: `${conf.url}/tianfang/super_file`,
             async: true,
             data: fd,
             contentType: false,
@@ -43,7 +44,7 @@ class Design extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/upsuper_img",
+                    url:`${conf.url}/tianfang/upsuper_img`,
                     data: {
                         "id": this.state.id 
                     },
@@ -72,7 +73,7 @@ class Design extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/super_files",
+            url: `${conf.url}/tianfang/super_files`,
             async: true,
             data: fd,
             contentType: false,
@@ -80,7 +81,7 @@ class Design extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/upsuper_imgs",
+                    url: `${conf.url}/tianfang/upsuper_imgs`,
                     data: {
                         "id": this.state.id 
                     },
@@ -116,7 +117,7 @@ class Design extends Component {
         var id=aa.parentElement.firstElementChild.innerHTML
             $.ajax({
                 type:"post",
-                url:"http://localhost:8100/tianfang/dlcases_supers",
+                url:`${conf.url}/tianfang/dlcases_supers`,
                 data:{"id":id},
                 success:function(e){                
                 for(var i in this.state.supers){
@@ -143,7 +144,7 @@ class Design extends Component {
         })
          $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upsuperss",
+            url:`${conf.url}/tianfang/upsuperss`,
             async:"true",
             data:{'id':this.state.id,"title":$("#text_supers_in").val()},
             success:function(pp){

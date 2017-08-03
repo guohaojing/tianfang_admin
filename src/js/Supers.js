@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './../css/news.css';
+import conf from './../config';
 class Supers extends Component {
 	constructor(){
        super();
@@ -12,7 +13,7 @@ class Supers extends Component {
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/supers",
+            url:`${conf.url}/tianfang/supers`,
             async:"true",
             success:function(pp){
             console.log(pp)
@@ -35,7 +36,7 @@ class Supers extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/super_file",
+            url: `${conf.url}/tianfang/super_file`,
             async: true,
             data: fd,
             contentType: false,
@@ -43,7 +44,7 @@ class Supers extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/upsuper_img",
+                    url: `${conf.url}/tianfang/upsuper_img`,
                     data: {
                         "id": this.state.id 
                     },
@@ -78,7 +79,7 @@ class Supers extends Component {
 		var id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases_supers",
+				url:`${conf.url}/tianfang/dlcases_supers`,
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.supers){
@@ -105,7 +106,7 @@ class Supers extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upsupers",
+            url:`${conf.url}/tianfang/upsupers`,
             async:"true",
             data:{'id':this.state.id,"title":$("#text_supers").val()},
             success:function(pp){

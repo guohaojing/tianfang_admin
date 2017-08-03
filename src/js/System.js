@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './../css/news.css';
+import conf from './../config';
 class System extends Component {
 	constructor(){
        super();
@@ -12,7 +13,7 @@ class System extends Component {
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/system",
+            url:`${conf.url}/tianfang/system`,
             async:"true",
             success:function(pp){
             console.log(pp)
@@ -35,7 +36,7 @@ class System extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/system_file",
+            url: `${conf.url}/tianfang/system_file`,
             async: true,
             data: fd,
             contentType: false,
@@ -43,7 +44,7 @@ class System extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/upsystem_img",
+                    url: `${conf.url}/tianfang/upsystem_img`,
                     data: {
                         "id": this.state.id 
                     },
@@ -79,7 +80,7 @@ class System extends Component {
 		var id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases_system",
+				url:`${conf.url}/tianfang/dlcases_system`,
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.system){
@@ -106,7 +107,7 @@ class System extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upsystem",
+            url:`${conf.url}/tianfang/upsystem`,
             async:"true",
             data:{'id':this.state.id,"title":$("#text_system").val()},
             success:function(pp){

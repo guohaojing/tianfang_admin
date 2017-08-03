@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import '.././css/img.css';
-
+import conf from './../config';
 class Img extends Component {
 	constructor(){
        super();
@@ -13,7 +13,7 @@ class Img extends Component {
 	componentDidMount(){
         $.ajax({
             type:"get",
-            url:"http://localhost:8100/tianfang/img",
+            url:`${conf.url}/tianfang/img`,
             async:"true",
             success:function(pp){
      console.log(pp)
@@ -43,7 +43,7 @@ class Img extends Component {
             var  id=aa.parentElement.firstElementChild.innerHTML
             $.ajax({
                 type:"post",
-                url:"http://localhost:8100/tianfang/dlcases12",
+                url:`${conf.url}/tianfang/dlcases12`,
                 data:{"id":id},
                 success:function(e){                
                 for(var i in this.state.img){
@@ -70,7 +70,7 @@ class Img extends Component {
         })
          $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upprize12",
+            url:`${conf.url}/tianfang/upprize12`,
             async:"true",
             data:{'id':this.state.id},
             success:function(pp){
@@ -92,7 +92,7 @@ class Img extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/incases12",
+            url: `${conf.url}/tianfang/incases12`,
             async: true,
             data: fd,
             contentType: false,
@@ -101,7 +101,7 @@ class Img extends Component {
                 if(element.id=="bbo"){
                     $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/alcases12",
+                    url: `${conf.url}/tianfang/alcases12`,
                     data: {
                         "id": this.state.id 
                     },
@@ -145,7 +145,7 @@ class Img extends Component {
         })
         $.ajax({
                 type:"post",
-                url:"http://localhost:8100/tianfang/accases12",
+                url:`${conf.url}/tianfang/accases12`,
                 success:function(e){                
                 alert(e)
             }.bind(this),

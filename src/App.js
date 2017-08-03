@@ -15,8 +15,6 @@ import './css/pintuer.css';
 import './css/css.css';
 import './css/vi.css';
 import './css/news.css';
-import './css/system.css';
-import './css/supers.css';
 
 class App extends Component {
 	    componentDidMount=function () {

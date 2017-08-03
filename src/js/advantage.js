@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './../css/news.css';
+import conf from './../config';
 class Cases2 extends Component {
 	constructor(){
        super();
@@ -12,7 +13,7 @@ class Cases2 extends Component {
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/cont",
+            url:`${conf.url}/tianfang/cont`,
             async:"true",
             success:function(pp){
                 this.setState({
@@ -42,7 +43,7 @@ class Cases2 extends Component {
 			var  id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases2",
+				url:`${conf.url}/tianfang/dlcases2`,
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.cont){
@@ -69,7 +70,7 @@ class Cases2 extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upcont",
+            url:`${conf.url}/tianfang/upcont`,
             async:"true",
             data:{'id':this.state.id,"title":$("#ytext").val(),"eng":$("#xtext").val()},
             success:function(pp){
@@ -90,7 +91,7 @@ class Cases2 extends Component {
             console.log(fd)
             $.ajax({
                 type: "post",
-                url: "http://localhost:8100/tianfang/incases2",
+                url: `${conf.url}/tianfang/incases2`,
                 async: true,
                 data: fd,
                 contentType: false,
@@ -98,7 +99,7 @@ class Cases2 extends Component {
                 success: function(e) {
                     $.ajax({
                         type: "post",
-                        url: "http://localhost:8100/tianfang/alcases2",
+                        url: `${conf.url}/tianfang/alcases2`,
                         data: {
                             "id": this.state.id 
                         },

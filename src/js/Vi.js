@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-
+import conf from './../config';
 class Vi extends Component {
 	constructor(){
        super();
@@ -12,7 +12,7 @@ class Vi extends Component {
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/pic_list",
+            url:`${conf.url}/tianfang/pic_list`,
             async:"true",
             success:function(pp){
      console.log(pp)
@@ -42,7 +42,7 @@ class Vi extends Component {
 			var  id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases1",
+				url:`${conf.url}/tianfang/dlcases1`,
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.pic_list){
@@ -69,7 +69,7 @@ class Vi extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upprize",
+            url:`${conf.url}/tianfang/upprize`,
             async:"true",
             data:{'id':this.state.id,"title":$("#ftext").val()},
             success:function(pp){
@@ -91,7 +91,7 @@ class Vi extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/incases4",
+            url: `${conf.url}/tianfang/incases4`,
             async: true,
             data: fd,
             contentType: false,
@@ -100,7 +100,7 @@ class Vi extends Component {
                 if(element.id=="ppo"){
                     $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/alcases4",
+                    url: `${conf.url}/tianfang/alcases4`,
                     data: {
                         "id": this.state.id 
                     },
@@ -144,7 +144,7 @@ class Vi extends Component {
 		})
 		$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/accases1",
+				url:`${conf.url}/tianfang/accases1`,
 				data:{"text":$("#bb").val()},
 				success:function(e){				
 				alert(e)

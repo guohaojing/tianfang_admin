@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './../css/news.css';
+import conf from './../config';
 class Cases extends Component {
 	constructor(){
        super();
@@ -12,7 +13,7 @@ class Cases extends Component {
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/prize",
+            url:`${conf.url}/tianfang/prize`,
             async:"true",
             success:function(pp){
      console.log(pp)
@@ -42,7 +43,7 @@ class Cases extends Component {
 			var  id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases8",
+				url:`${conf.url}/tianfang/dlcases8`,
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.prize){
@@ -69,7 +70,7 @@ class Cases extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upprizes",
+            url:`${conf.url}/tianfang/upprizes`,
             async:"true",
             data:{'id':this.state.id,"title":$("#ptext").val()},
             success:function(pp){
@@ -103,7 +104,7 @@ class Cases extends Component {
         })
         $.ajax({
                 type:"post",
-                url:"http://localhost:8100/tianfang/accases2",
+                url:`${conf.url}/tianfang/accases2`,
                 data:{"text":$("#th").val()},
                 success:function(e){                
                 alert(e)
@@ -123,7 +124,7 @@ class Cases extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/incases8",
+            url: `${conf.url}/tianfang/incases8`,
             async: true,
             data: fd,
             contentType: false,
@@ -132,7 +133,7 @@ class Cases extends Component {
                     if(element.id=="ppo"){
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/alcases8",
+                    url: `${conf.url}/tianfang/alcases8`,
                     data: {
                         "id": this.state.id 
                     },
@@ -163,7 +164,7 @@ class Cases extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/incases11",
+            url: `${conf.url}/tianfang/incases11`,
             async: true,
             data: fd,
             contentType: false,
@@ -172,7 +173,7 @@ class Cases extends Component {
             if(element.id=="opp"){
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/alcases12",
+                    url: `${conf.url}/tianfang/alcases12`,
                     data: {
                         "id": this.state.id 
                     },

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './../css/gold.css';
+import conf from './../config';
 class Gold extends Component {
 	constructor(){
        super();
@@ -12,7 +13,7 @@ class Gold extends Component {
 	componentDidMount(){
         $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/system",
+            url:`${conf.url}/tianfang/system`,
             async:"true",
             success:function(pp){
             console.log(pp)
@@ -35,7 +36,7 @@ class Gold extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/system_file",
+            url: `${conf.url}/tianfang/system_file`,
             async: true,
             data: fd,
             contentType: false,
@@ -43,7 +44,7 @@ class Gold extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/upsystem_img",
+                    url: `${conf.url}/tianfang/upsystem_img`,
                     data: {
                         "id": this.state.id 
                     },
@@ -71,7 +72,7 @@ class Gold extends Component {
         console.log(fd)
         $.ajax({
             type: "post",
-            url: "http://localhost:8100/tianfang/system_files",
+            url: `${conf.url}/tianfang/system_files`,
             async: true,
             data: fd,
             contentType: false,
@@ -79,7 +80,7 @@ class Gold extends Component {
             success: function(e) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8100/tianfang/upsystem_imgs",
+                    url: `${conf.url}/tianfang/upsystem_imgs`,
                     data: {
                         "id": this.state.id 
                     },
@@ -114,7 +115,7 @@ class Gold extends Component {
 		var id=aa.parentElement.firstElementChild.innerHTML
 			$.ajax({
 				type:"post",
-				url:"http://localhost:8100/tianfang/dlcases_system",
+				url:`${conf.url}/tianfang/dlcases_system`,
 				data:{"id":id},
 				success:function(e){				
 				for(var i in this.state.system){
@@ -141,7 +142,7 @@ class Gold extends Component {
 		})
     	 $.ajax({
             type:"post",
-            url:"http://localhost:8100/tianfang/upsystems",
+            url:`${conf.url}/tianfang/upsystems`,
             async:"true",
             data:{'id':this.state.id,"title":$("#text_system_in").val()},
             success:function(pp){
