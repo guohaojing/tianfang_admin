@@ -119,8 +119,7 @@ class System extends Component {
     }.bind(this);
     render() {
         return (
-        	<div classname="box">
-        		
+        	<div className="box">        		
         		<div className="box_bottom">
         			<ul>
 						<li className="uid">id</li>

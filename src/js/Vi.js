@@ -156,7 +156,7 @@ class Vi extends Component {
 		}.bind(this)
     render() {
         return (
-        	<div classname="box">
+        	<div className="box">
         		<div className="add" onClick={this.add}>+</div>	
         		<div className="box_bottom">
         			<ul>

@@ -156,7 +156,7 @@ class Design extends Component {
     }.bind(this);
     render() {
         return (
-            <div classname="box">
+            <div className="box">
                 
                 <div className="box_bottom">
                     <ul>
@@ -171,7 +171,7 @@ class Design extends Component {
                                 <button className="rev" onClick={this.fn} id="rev">修改</button>
                                 <div className="picss">
                                     {pp.more.split('?').map(function(oo,i){
-                                        return <img src={'http://localhost:8100/images/'+oo} alt="" />
+                                        return <img key={i} src={'http://localhost:8100/images/'+oo} alt="" />
                                     })}
 
                                 </div>

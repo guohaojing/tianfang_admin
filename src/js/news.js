@@ -129,7 +129,7 @@ class Cases extends Component {
             contentType: false,
             processData: false,
             success: function(e) {
-                if(element.id=="ppo"){
+                    if(element.id=="ppo"){
                 $.ajax({
                     type: "post",
                     url: "http://localhost:8100/tianfang/alcases8",
@@ -143,7 +143,8 @@ class Cases extends Component {
                         console.log("失败了")
                     }
                 });
-            }
+                }
+        
             }.bind(this),
             error: function() {
                 console.log("失败了")
@@ -151,10 +152,55 @@ class Cases extends Component {
         });
 
     }.bind(this)
+
+    setFiles2 = function(element) {
+        console.log(element)
+        var files = []
+        files = element.files[0]
+        var fd = new FormData(); //表单处理数据的方法
+        fd.append('uploadedFile', files)
+        //用append方法以键值对的方式保存
+        console.log(fd)
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8100/tianfang/incases11",
+            async: true,
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(e) {
+if(element.id=="opp"){
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:8100/tianfang/alcases12",
+                    data: {
+                        "id": this.state.id 
+                    },
+                    success: function(e) {
+                        console.log(e)
+                    }.bind(this),
+                    error: function() {
+                        console.log("失败了")
+                    }
+                });
+                }
+
+
+            }.bind(this),
+            error: function() {
+                console.log("失败了")
+            }
+        });
+
+    }.bind(this)
+
+
+
+
+
     render() {
         return (
-        	<div classname="box">
-        		
+        	<div className="box">        		
         		<div className="box_bottom">
                 <div className="add" onClick={this.add}>+</div> 
         			<ul>
@@ -173,8 +219,9 @@ class Cases extends Component {
         				
         			 }.bind(this))}
         			<div className="alert">
-        				<p><input type="file" ref="fixedimg3" id="ppo"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
+        				<p className="oo"><input type="file" ref="fixedimg3" id="ppo"  onChange={this.setFiles.bind(null,this.refs.fixedimg3)}    multiple="multiple"/></p>
         				<div className="tit">title:<input type="text" id="ptext"/></div>
+                        <div className="more">more:<input type="file" ref="fixedimg4" id="opp"  onChange={this.setFiles2.bind(null,this.refs.fixedimg4)}    multiple="multiple"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>
         			</div>
         			</ul>	
@@ -182,6 +229,7 @@ class Cases extends Component {
                 <div className="add_box">
                     <p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple" id="btn"/></p>
                     <div className="tit">title:<input type="text" id="th"/></div>
+                     <div className="more">more:<input type="file" ref="fixedimg6" id="lp"  onChange={this.setFiles2.bind(null,this.refs.fixedimg6)}    multiple="multiple"/></div>
                     <button className="ok" onClick={this.yes} id="ok">确定</button>
                 </div>
         	</div>    

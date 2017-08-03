@@ -118,7 +118,7 @@ class Cases2 extends Component {
         }.bind(this)
     render() {
         return (
-        	<div classname="box">
+        	<div className="box">
         		<div className="box_bottom">
         			<ul>
 						<li className="uid">id</li>
@@ -138,7 +138,7 @@ class Cases2 extends Component {
         				
         			 }.bind(this))}
         			<div className="alert">
-        				    <p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple"/></p>
+        				<p><input type="file" ref="fixedimg2"  onChange={this.setFiles.bind(null,this.refs.fixedimg2)}    multiple="multiple"/></p>
         				<div className="tit">title:<input type="text" id="ytext"/></div>
         				<div className="engo">eng:<input type="text" id="xtext"/></div>
         				<button className="ok" onClick={this.ok} id="ok">确定</button>

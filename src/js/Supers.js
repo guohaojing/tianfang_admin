@@ -118,7 +118,7 @@ class Supers extends Component {
     }.bind(this);
     render() {
         return (
-        	<div classname="box">
+        	<div className="box">
         		
         		<div className="box_bottom">
         			<ul>

@@ -1,0 +1,11 @@
+*{
+	margin:0;padding:0;
+}
+.lb_img{
+	float:left;
+	margin-left:35%;
+}
+.lb_img img{
+	width:50px;
+	height:50px;
+}

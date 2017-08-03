@@ -8,6 +8,7 @@ import Supers from './js/Supers';
 import Gold from './js/Gold';
 import Design from './js/Design';
 import Vi from './js/Vi';
+import Img from './js/Img';
 import Prize from './js/Prize';
 import './css/admin.css';
 import './css/pintuer.css';
@@ -69,6 +70,12 @@ class App extends Component {
           $(".bread li:nth-child(2)").text("PRIZE")
 
       })
+      $("#img").click(function(){
+          $(".admin").children().hide()
+          $(".img").show()
+          $(".bread li:nth-child(2)").text("轮播")
+
+      })
 	  }
   render() {
     return (
@@ -98,7 +105,8 @@ class App extends Component {
       <li id="gold"><a><span className="icon-caret-right"></span>GOLD</a></li>
       <li id="design"><a><span className="icon-caret-right"></span>DESIGN</a></li>
       <li id="vi"><a><span className="icon-caret-right"></span>标志+VI</a></li>    
-      <li id="prize"><a><span className="icon-caret-right"></span>PRIZE</a></li>    
+      <li id="prize"><a><span className="icon-caret-right"></span>PRIZE</a></li> 
+      <li id="img"><a><span className="icon-caret-right"></span>轮播</a></li>       
     </ul>  
   </div>
   <ul className="bread">
@@ -114,6 +122,7 @@ class App extends Component {
     <div className="design"><Design></Design></div>
     <div className="vi"><Vi></Vi></div>
     <div className="prize"><Prize></Prize></div>
+    <div className="img"><Img></Img></div>
     <p>后台管理系统</p>
    </div>
 </div>

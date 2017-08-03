@@ -154,7 +154,7 @@ class Gold extends Component {
     }.bind(this);
     render() {
         return (
-        	<div classname="box">
+        	<div className="box">
         		
         		<div className="box_bottom">
         			<ul>
@@ -168,15 +168,12 @@ class Gold extends Component {
                 						<button className="mov" onClick={this.fns} id="mov">删除</button>
                 						<button className="rev" onClick={this.fn} id="rev">修改</button>
                 						<div className="picss">
-
                                             {pp.more.split('?').map(function(oo,i){
-                                            return <img src={'http://localhost:8100/images/'+oo} alt="" />
+                                            return <img key={i} src={'http://localhost:8100/images/'+oo} alt="" />
                                             })}
 
-                                        </div>
-                						
-                					</div>)
-                				
+                                        </div>                					
+                					</div>)                				
                 			 }.bind(this))}
             			<div className="alert">
             				<input type="file" ref="aes" onChange={this.setFiles.bind(null,this.refs.aes)} multiple="multiple" className="flie_img"/>
