@@ -123,7 +123,7 @@ class App extends Component {
     <div className="vi"><Vi></Vi></div>
     <div className="prize"><Prize></Prize></div>
     <div className="img"><Img></Img></div>
-    <p>后台管理系统</p>
+    <p className="manage">后台管理系统</p>
    </div>
 </div>
     );
