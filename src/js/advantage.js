@@ -68,11 +68,27 @@ class Cases2 extends Component {
     	$('.wrap').css({
 			'display':"block"
 		})
+         var title3 =$("#ytext").val()
+         var title4=$("#xtext").val()
+          if($("#ytext").val() == "") {
+            for(var i = 0; i < this.state.cont.length; i++) {
+                if(this.state.cont[i].id == this.state.id) {
+                    title3= this.state.cont[i].title
+                }
+            }
+        }
+        if($("#xtext").val() == "") {
+            for(var i = 0; i < this.state.cont.length; i++) {
+                if(this.state.cont[i].id == this.state.id) {
+                    title4= this.state.cont[i].eng
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upcont`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#ytext").val(),"eng":$("#xtext").val()},
+            data:{'id':this.state.id,"title":title3,"eng":title4},
             success:function(pp){
             	alert(pp)
             }.bind(this),

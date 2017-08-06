@@ -68,11 +68,19 @@ class Cases extends Component {
     	$('.wrap').css({
 			'display':"block"
 		})
+         var title7 =$("#ptext").val()
+          if($("#ptext").val() == "") {
+            for(var i = 0; i < this.state.prize.length; i++) {
+                if(this.state.prize[i].id == this.state.id) {
+                    title7= this.state.prize[i].prize_word
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upprizes`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#ptext").val()},
+            data:{'id':this.state.id,"title":title7},
             success:function(pp){
             	console.log(pp)
                 alert(pp)
@@ -96,24 +104,29 @@ class Cases extends Component {
         
     }.bind(this)
      yes=function(){
-        $('.add_box').css({
+        if($("#th").val()==""){
+            alert("不能为空")
+        }else{
+            $('.add_box').css({
             'display':'none'
-        })
-        $('.box_bottom').css({
-            'display':"block"
-        })
-        $.ajax({
-                type:"post",
-                url:`${conf.url}/tianfang/accases2`,
-                data:{"text":$("#th").val()},
-                success:function(e){                
-                alert(e)
-            }.bind(this),
-            error:function(){
-                console.log("失败了")
+            })
+            $('.box_bottom').css({
+                'display':"block"
+            })
+            $.ajax({
+                    type:"post",
+                    url:`${conf.url}/tianfang/accases2`,
+                    data:{"text":$("#th").val()},
+                    success:function(e){                
+                    alert(e)
+                }.bind(this),
+                error:function(){
+                    console.log("失败了")
+                }
+                });     
             }
-            });     
-        }.bind(this)
+            }
+        
     setFiles = function(element) {
         console.log(element)
         var files = []

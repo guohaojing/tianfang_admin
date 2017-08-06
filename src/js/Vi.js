@@ -61,17 +61,26 @@ class Vi extends Component {
 			});
     }.bind(this);
     ok=function(){
+    
     	$('.alert').css({
     		'display':'none'
     	})
     	$('.wrap').css({
 			'display':"block"
 		})
+        var title1 =$("#ftext").val() 
+          if($("#ftext").val() == "") {
+            for(var i = 0; i < this.state.pic_list.length; i++) {
+                if(this.state.pic_list[i].id == this.state.id) {
+                    title1= this.state.pic_list[i].after
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upprize`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#ftext").val()},
+            data:{'id':this.state.id,"title":title1},
             success:function(pp){
             	console.log(pp)
                 alert(pp)
@@ -79,8 +88,10 @@ class Vi extends Component {
             error:function(){
                 alert('失败了');
             }
-        });
-    }.bind(this)
+        });   
+    }.bind(this);
+       
+
     setFiles = function(element) {
         console.log(element)
         var files = []
@@ -136,24 +147,30 @@ class Vi extends Component {
     	
     }.bind(this)
     yes=function(){
-    	$('.add_box').css({
-    		'display':'none'
-    	})
-    	$('.box_bottom').css({
-			'display':"block"
-		})
-		$.ajax({
-				type:"post",
-				url:`${conf.url}/tianfang/accases1`,
-				data:{"text":$("#bb").val()},
-				success:function(e){				
-				alert(e)
-      		}.bind(this),
-      		error:function(){
-      			console.log("失败了")
-      		}
-			});		
-		}.bind(this)
+    	
+        if($("#bb").val()==""){
+                alert("不能为空")
+            }else{
+                $('.add_box').css({
+                    'display':'none'
+                })
+                $('.box_bottom').css({
+                    'display':"block"
+                })
+        
+               $.ajax({
+                type:"post",
+                url:`${conf.url}/tianfang/accases1`,
+                data:{"text":$("#bb").val()},
+                success:function(e){                
+                        alert(e)
+                    }.bind(this),
+                    error:function(){
+                        console.log("失败了")
+                    }
+                    }); 
+                }
+            }
     render() {
         return (
         	<div className="box">

@@ -140,11 +140,19 @@ class Gold extends Component {
     	$('.wraps').css({
 			'display':"block"
 		})
+         var title6 =$("#text_system_in").val()
+          if($("#text_system_in").val() == "") {
+            for(var i = 0; i < this.state.system.length; i++) {
+                if(this.state.system[i].id == this.state.id) {
+                    title6= this.state.system[i].con
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upsystems`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#text_system_in").val()},
+            data:{'id':this.state.id,"title":title6},
             success:function(pp){
             	console.log(pp)
             }.bind(this),

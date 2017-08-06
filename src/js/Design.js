@@ -142,11 +142,19 @@ class Design extends Component {
         $('.wraps').css({
             'display':"block"
         })
+         var title5 =$("#text_supers_in").val()
+          if($("#text_supers_in").val() == "") {
+            for(var i = 0; i < this.state.supers.length; i++) {
+                if(this.state.supers[i].id == this.state.id) {
+                    title5= this.state.supers[i].con
+                }
+            }
+        }
          $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upsuperss`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#text_supers_in").val()},
+            data:{'id':this.state.id,"title":title5},
             success:function(pp){
                 console.log(pp)
             }.bind(this),

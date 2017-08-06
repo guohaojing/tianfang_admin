@@ -68,11 +68,19 @@ class Prize extends Component {
     	$('.wrap').css({
 			'display':"block"
 		})
+        var title8 =$("#ptext_prize").val()
+          if($("#ptext_prize").val() == "") {
+            for(var i = 0; i < this.state.prize.length; i++) {
+                if(this.state.prize[i].id == this.state.id) {
+                    title8= this.state.prize[i].con
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upprizes_prize`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#ptext_prize").val()},
+            data:{'id':this.state.id,"title":title8},
             success:function(pp){
             	console.log(pp)
                 alert(pp)
@@ -96,24 +104,29 @@ class Prize extends Component {
         
     }.bind(this)
      yes=function(){
-        $('.add_box').css({
+        if($("#th_prize").val()==""){
+            alert("不能为空")
+        }else{
+            $('.add_box').css({
             'display':'none'
-        })
-        $('.box_bottom').css({
-            'display':"block"
-        })
-        $.ajax({
-                type:"post",
-                url:`${conf.url}/tianfang/accases2`,
-                data:{"text":$("#th_prize").val()},
-                success:function(e){                
-                alert(e)
-            }.bind(this),
-            error:function(){
-                console.log("失败了")
-            }
-            });     
-        }.bind(this)
+                })
+                $('.box_bottom').css({
+                    'display':"block"
+                })
+                $.ajax({
+                        type:"post",
+                        url:`${conf.url}/tianfang/accases2`,
+                        data:{"text":$("#th_prize").val()},
+                        success:function(e){                
+                        alert(e)
+                    }.bind(this),
+                    error:function(){
+                        console.log("失败了")
+                    }
+                    });     
+                }
+        }
+        
     setFiles = function(element) {
         console.log(element)
         var files = []

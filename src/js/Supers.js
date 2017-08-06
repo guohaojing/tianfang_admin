@@ -104,11 +104,19 @@ class Supers extends Component {
     	$('.wrap').css({
 			'display':"block"
 		})
+        var title9 =$("#text_supers").val()
+          if($("#text_supers").val() == "") {
+            for(var i = 0; i < this.state.supers.length; i++) {
+                if(this.state.supers[i].id == this.state.id) {
+                    title9= this.state.supers[i].super_word
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upsupers`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#text_supers").val()},
+            data:{'id':this.state.id,"title":title9},
             success:function(pp){
             	console.log(pp)
             }.bind(this),

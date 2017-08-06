@@ -105,11 +105,19 @@ class System extends Component {
     	$('.wrap').css({
 			'display':"block"
 		})
+        var title10 =$("#text_system").val()
+          if($("#text_system").val() == "") {
+            for(var i = 0; i < this.state.system.length; i++) {
+                if(this.state.system[i].id == this.state.id) {
+                    title10= this.state.system[i].system_word
+                }
+            }
+        }
     	 $.ajax({
             type:"post",
             url:`${conf.url}/tianfang/upsystem`,
             async:"true",
-            data:{'id':this.state.id,"title":$("#text_system").val()},
+            data:{'id':this.state.id,"title":title10},
             success:function(pp){
             	console.log(pp)
             }.bind(this),

@@ -112,10 +112,7 @@ class Img extends Component {
                         console.log("失败了")
                     }
                 });  
-                }
-                
-                
-                
+                }  
             }.bind(this),
             error: function() {
                 console.log("失败了")
